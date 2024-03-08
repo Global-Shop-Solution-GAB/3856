@@ -1,0 +1,660 @@
+Program.Sub.ScreenSU.Start
+gui.F_InvRep..create
+gui.F_InvRep..caption("Replace Parts on Work Order")
+gui.F_InvRep..size(14775,6480)
+gui.F_InvRep..position(0,0)
+gui.F_InvRep..event(unload,f_invrep_unload)
+gui.F_InvRep..alwaysontop(False)
+gui.F_InvRep..fontname("Arial")
+gui.F_InvRep..fontsize(8)
+gui.F_InvRep..forecolor(0)
+gui.F_InvRep..fontstyle(,,,,)
+gui.F_InvRep..BackColor(-2147483633)
+gui.F_InvRep..controlbox(True)
+gui.F_InvRep..maxbutton(True)
+gui.F_InvRep..minbutton(True)
+gui.F_InvRep..mousepointer(0)
+gui.F_InvRep..moveable(True)
+gui.F_InvRep..sizeable(True)
+gui.F_InvRep..ShowInTaskBar(True)
+gui.F_InvRep..titlebar(True)
+gui.F_InvRep.frmPartO.create(frame)
+gui.F_InvRep.frmPartO.caption("Original Part")
+gui.F_InvRep.frmPartO.size(3300,1410)
+gui.F_InvRep.frmPartO.position(70,15)
+gui.F_InvRep.frmPartO.visible(True)
+gui.F_InvRep.frmPartO.fontname("Arial")
+gui.F_InvRep.frmPartO.fontsize(8)
+gui.F_InvRep.frmPartT.create(frame)
+gui.F_InvRep.frmPartT.caption("Replacement Part")
+gui.F_InvRep.frmPartT.size(3255,1410)
+gui.F_InvRep.frmPartT.position(3905,20)
+gui.F_InvRep.frmPartT.visible(True)
+gui.F_InvRep.frmPartT.fontname("Arial")
+gui.F_InvRep.frmPartT.fontsize(8)
+gui.F_InvRep.frmSchedOpt.create(frame)
+gui.F_InvRep.frmSchedOpt.caption("Schedule Option")
+gui.F_InvRep.frmSchedOpt.size(3015,885)
+gui.F_InvRep.frmSchedOpt.position(9705,0)
+gui.F_InvRep.frmSchedOpt.visible(True)
+gui.F_InvRep.frmSchedOpt.fontname("Arial")
+gui.F_InvRep.frmSchedOpt.fontsize(8)
+gui.F_InvRep.lblPartO.create(label,"Part:",True,1815,255,1,155,200,True,0,Arial,8,-2147483633,0)
+gui.F_InvRep.lblPartO.parent("frmparto")
+gui.F_InvRep.lblPartOLoc.create(label,"Loc:",True,465,255,1,2215,195,True,0,Arial,8,-2147483633,0)
+gui.F_InvRep.lblPartOLoc.parent("frmparto")
+gui.F_InvRep.txtPartO.create(textbox,"",True,1995,300,0,100,400,False,0,Arial,8,-2147483643,1)
+gui.F_InvRep.txtPartO.parent("frmparto")
+gui.F_InvRep.txtPartOLoc.create(textbox,"",True,465,300,0,2175,400,False,0,Arial,8,-2147483643,1)
+gui.F_InvRep.txtPartOLoc.parent("frmparto")
+gui.F_InvRep.cmdPartOBrw.create(button)
+gui.F_InvRep.cmdPartOBrw.caption("^")
+gui.F_InvRep.cmdPartOBrw.visible(True)
+gui.F_InvRep.cmdPartOBrw.size(405,330)
+gui.F_InvRep.cmdPartOBrw.zorder(0)
+gui.F_InvRep.cmdPartOBrw.position(2720,390)
+gui.F_InvRep.cmdPartOBrw.enabled(True)
+gui.F_InvRep.cmdPartOBrw.parent("frmparto")
+gui.F_InvRep.cmdPartOBrw.fontname("Arial")
+gui.F_InvRep.cmdPartOBrw.fontsize(8)
+gui.F_InvRep.cmdPartOBrw.event(click,cmdpartobrw_click)
+gui.F_InvRep.lblPartT.create(label,"Part:",True,1815,255,1,155,200,True,0,Arial,8,-2147483633,0)
+gui.F_InvRep.lblPartT.parent("frmpartt")
+gui.F_InvRep.lblPartTLoc.create(label,"Loc:",True,465,255,1,2215,195,True,0,Arial,8,-2147483633,0)
+gui.F_InvRep.lblPartTLoc.parent("frmpartt")
+gui.F_InvRep.txtPartT.create(textbox,"",True,1995,300,0,100,400,False,0,Arial,8,-2147483643,1)
+gui.F_InvRep.txtPartT.parent("frmpartt")
+gui.F_InvRep.txtPartTLoc.create(textbox,"",True,465,300,0,2175,400,False,0,Arial,8,-2147483643,1)
+gui.F_InvRep.txtPartTLoc.parent("frmpartt")
+gui.F_InvRep.cmdPartTBrw.create(button)
+gui.F_InvRep.cmdPartTBrw.caption("^")
+gui.F_InvRep.cmdPartTBrw.visible(True)
+gui.F_InvRep.cmdPartTBrw.size(405,330)
+gui.F_InvRep.cmdPartTBrw.zorder(0)
+gui.F_InvRep.cmdPartTBrw.position(2720,390)
+gui.F_InvRep.cmdPartTBrw.enabled(True)
+gui.F_InvRep.cmdPartTBrw.parent("frmpartt")
+gui.F_InvRep.cmdPartTBrw.fontname("Arial")
+gui.F_InvRep.cmdPartTBrw.fontsize(8)
+gui.F_InvRep.cmdPartTBrw.event(click,cmdparttbrw_click)
+gui.F_InvRep.fgPart.create(gsflexgrid)
+gui.F_InvRep.fgPart.FixedRows(0)
+gui.F_InvRep.fgPart.FixedCols(0)
+gui.F_InvRep.fgPart.visible(True)
+gui.F_InvRep.fgPart.size(14505,3525)
+gui.F_InvRep.fgPart.zorder(0)
+gui.F_InvRep.fgPart.position(0,1600)
+gui.F_InvRep.fgPart.enabled(True)
+gui.F_InvRep.fgPart.event(mouseup,fgpart_mouseup)
+gui.F_InvRep.cmdSave.create(button)
+gui.F_InvRep.cmdSave.caption("Schedule Selected")
+gui.F_InvRep.cmdSave.visible(True)
+gui.F_InvRep.cmdSave.size(1860,480)
+gui.F_InvRep.cmdSave.zorder(0)
+gui.F_InvRep.cmdSave.position(8600,5335)
+gui.F_InvRep.cmdSave.enabled(True)
+gui.F_InvRep.cmdSave.fontname("Arial")
+gui.F_InvRep.cmdSave.fontsize(8)
+gui.F_InvRep.cmdSave.event(click,cmdsave_click)
+gui.F_InvRep.optB.create(option)
+gui.F_InvRep.optB.caption("Bwd")
+gui.F_InvRep.optB.visible(True)
+gui.F_InvRep.optB.size(750,255)
+gui.F_InvRep.optB.zorder(0)
+gui.F_InvRep.optB.position(215,380)
+gui.F_InvRep.optB.enabled(True)
+gui.F_InvRep.optB.alignment(0)
+gui.F_InvRep.optB.parent("frmschedopt")
+gui.F_InvRep.optB.fontname("Arial")
+gui.F_InvRep.optB.fontsize(8)
+gui.F_InvRep.optF.create(option)
+gui.F_InvRep.optF.caption("Fwd")
+gui.F_InvRep.optF.visible(True)
+gui.F_InvRep.optF.size(810,255)
+gui.F_InvRep.optF.zorder(0)
+gui.F_InvRep.optF.position(1100,385)
+gui.F_InvRep.optF.enabled(True)
+gui.F_InvRep.optF.alignment(0)
+gui.F_InvRep.optF.parent("frmschedopt")
+gui.F_InvRep.optF.fontname("Arial")
+gui.F_InvRep.optF.fontsize(8)
+gui.F_InvRep.optH.create(option)
+gui.F_InvRep.optH.caption("Here")
+gui.F_InvRep.optH.visible(True)
+gui.F_InvRep.optH.size(750,255)
+gui.F_InvRep.optH.zorder(0)
+gui.F_InvRep.optH.position(1930,370)
+gui.F_InvRep.optH.enabled(True)
+gui.F_InvRep.optH.alignment(0)
+gui.F_InvRep.optH.parent("frmschedopt")
+gui.F_InvRep.optH.fontname("Arial")
+gui.F_InvRep.optH.fontsize(8)
+gui.F_InvRep.txtPartODes.create(textbox,"",True,3015,300,0,100,1000,False,0,Arial,8,-2147483643,1)
+gui.F_InvRep.txtPartODes.parent("frmparto")
+gui.F_InvRep.lblPartODes.create(label,"Description:",True,930,255,1,155,775,True,0,Arial,8,-2147483633,0)
+gui.F_InvRep.lblPartODes.parent("frmparto")
+gui.F_InvRep.txtPartTDes.create(textbox,"",True,3015,300,0,90,985,False,0,Arial,8,-2147483643,1)
+gui.F_InvRep.txtPartTDes.parent("frmpartt")
+gui.F_InvRep.lblPartTDes.create(label,"Description:",True,930,255,1,140,785,True,0,Arial,8,-2147483633,0)
+gui.F_InvRep.lblPartTDes.parent("frmpartt")
+gui.F_InvRep.cmdPartOBrw.tabstop(True)
+gui.F_InvRep.cmdPartOBrw.tabindex(1)
+gui.F_InvRep.cmdPartTBrw.tabstop(True)
+gui.F_InvRep.cmdPartTBrw.tabindex(2)
+gui.F_InvRep.cmdSave.tabstop(True)
+gui.F_InvRep.cmdSave.tabindex(3)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+
+Variable.UDT.uINV.Define("JOB",String,JOB)
+Variable.UDT.uINV.Define("SUFFIX",String,SUFFIX)
+Variable.UDT.uINV.Define("PART",String,PART)
+Variable.UDT.uINV.Define("DESCRIPTION",String,DESCRIPTION)
+Variable.UDT.uINV.Define("SETUP",Float,SETUP)
+Variable.UDT.uINV.Define("RUNTIME",Float,RUNTIME)
+Variable.UDT.uINV.Define("SEL",String,SEL)
+Variable.UDT.uINV.Define("DATE_DUE",Date,DATE_DUE)
+Variable.UDT.uINV.Define("LOC",String,LOCATION)
+Variable.UDT.uINV.Define("SEQ",String,SEQ)
+Variable.UDT.uINV.Define("DATE_START",Date,DATE_OPENED)
+Variable.UDT.uINV.Define("QTY_RFQ",Float,HOURS_ESTIMATED)
+Variable.UDT.uINV.Define("WO_QTY",Float,QTY_ORDER)
+Variable.uGlobal.uINV.Declare("uINV")
+Variable.Global.sOpt.Declare(String,"B")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+Gui.F_InvRep.optB.Value(1)
+
+Gui.F_InvRep..Show
+
+Program.Sub.Main.End
+
+program.sub.f_invrep_unload.start
+F.Intrinsic.Control.SetErrorHandler("f_invrep_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_invrep_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_invrep_unload.end
+
+program.sub.cmdsave_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.F_InvRep!txtPartT.Text,=,"")
+	F.Intrinsic.UI.Msgbox("No Replacement Part selected","Invalid Part")
+F.Intrinsic.Control.Else
+	Gui.F_InvRep.fgPart.Commit
+
+	F.Intrinsic.Control.If(V.Screen.F_InvRep!optB.Value,=,"True")
+		V.Global.sOpt.Set("B")
+	F.Intrinsic.Control.ElseIf(V.Screen.F_InvRep!optF.Value,=,"True")
+		V.Global.sOpt.Set("F")
+	F.Intrinsic.Control.Else
+		V.Global.sOpt.Set("H")
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.CallSub(Subupdatewo)
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdsave_click.end
+
+program.sub.cmdpartobrw_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdpartobrw_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.Browser(105,conx,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+	F.Intrinsic.UI.Msgbox("No Part was selected")
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.F_InvRep.txtPartO.Text(V.Local.sRet(0).Trim)
+	Gui.F_InvRep.txtPartOLoc.Text(V.Local.sRet(1).Trim)
+	Gui.F_InvRep.txtPartODes.Text(V.Local.sRet(2).Trim)
+	Gui.F_InvRep.txtPartT.Text("")
+	Gui.F_InvRep.txtPartTLoc.Text("")
+	F.Intrinsic.Control.CallSub(Subload_fgpart)
+
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdpartobrw_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdpartobrw_click.end
+
+program.sub.cmdparttbrw_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdparttbrw_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.Browser(105,conx,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+	F.Intrinsic.UI.Msgbox("No Replacement Part was selected")
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Screen.F_InvRep!txtPartOLoc.Text,<>,V.Local.sRet(1).Trim)
+		F.Intrinsic.UI.Msgbox("Parts must have the same Location","Wrong Location")
+	F.Intrinsic.Control.Else
+		Gui.F_InvRep.txtPartT.Text(V.Local.sRet(0).Trim)
+		Gui.F_InvRep.txtPartTLoc.Text(V.Local.sRet(1).Trim)
+		Gui.F_InvRep.txtPartTDes.Text(V.Local.sRet(2).Trim)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdparttbrw_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdparttbrw_click.end
+
+Program.Sub.subBuildStyles_fgPart.Start
+F.Intrinsic.Control.SetErrorHandler("subBuildStyles_fgPart_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Define Build Styles for Flex Grid fgPart
+'Declare/Define Default Font Size
+V.Local.iFontSize.Declare(Long,8)
+
+'Variable Used for Calculating Column Width (affected by Font Size)
+V.Local.fTempColWidth.Declare(Float,0)
+V.Local.fColWidthFactor.Declare(Float,1)
+V.Local.iCount.Declare(Long,0)
+
+'Define Number of Columns and Fixed Columns in Flex Grid
+'Fixed Column for Row Number
+Gui.F_InvRep.fgPart.Cols(15)
+'Gui.F_InvRep.fgPart.FixedCols(1)
+
+'Temp Set Row Count to 2 (So that Column Header can be Defined)
+'If No Data is Found Latter... Rows will Remain at 1 for the Fixed Header
+Gui.F_InvRep.fgPart.Rows(2)
+Gui.F_InvRep.fgPart.FixedRows(1)
+
+'--------------------------CREATE BUILD STYLES FOR FLEX GRID (USED FOR EITHER PART OF THE IF STATEMENT)----------------------------
+
+'Check Box selection
+Gui.F_InvRep.fgPart.TextMatrix(0,0,"Select")
+Gui.F_InvRep.fgPart.ColWidth(0,600)
+Gui.F_InvRep.fgPart.BuildStyle(1,0,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,0,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,0,"Format","alignment",4)
+Gui.F_InvRep.fgPart.BuildStyle(2,0,"type","Checkbox",False)
+Gui.F_InvRep.fgPart.BuildStyle(2,0,"Format","alignment",4)
+
+Gui.F_InvRep.fgPart.TextMatrix(1,0,"Job")
+V.Local.fTempColWidth.Set(700)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(1,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,1,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,1,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,1,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,1,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,1,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,1,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(2,0,"Suffix")
+V.Local.fTempColWidth.Set(600)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(2,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,2,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,2,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,2,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,2,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,2,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,2,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(3,0,"Seq")
+V.Local.fTempColWidth.Set(650)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(3,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,3,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,3,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,3,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,3,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,3,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,3,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(4,0,"Part")
+V.Local.fTempColWidth.Set(2000)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(4,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,4,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,4,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,4,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,4,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,4,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,4,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(5,0,"Loc")
+V.Local.fTempColWidth.Set(400)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(5,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,5,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,5,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,5,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,5,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,5,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,5,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(6,0,"Description")
+V.Local.fTempColWidth.Set(2200)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(6,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,6,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,6,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,6,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,6,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,6,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,6,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(7,0,"Setup")
+V.Local.fTempColWidth.Set(700)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(7,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,7,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,7,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,7,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,7,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,7,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,7,"Format","alignment",3)
+
+Gui.F_InvRep.fgPart.TextMatrix(8,0,"Runtime")
+V.Local.fTempColWidth.Set(800)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(8,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,8,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,8,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,8,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,8,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,8,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,8,"Format","alignment",3)
+
+Gui.F_InvRep.fgPart.TextMatrix(9,0,"New Setup")
+V.Local.fTempColWidth.Set(900)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(9,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,9,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,9,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,9,"fontstyle","size",7)
+Gui.F_InvRep.fgPart.BuildStyle(1,9,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,9,"type","locked",False)
+Gui.F_InvRep.fgPart.BuildStyle(2,9,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,9,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,9,"Color","Back",V.Color.LtGreen)
+
+Gui.F_InvRep.fgPart.TextMatrix(10,0,"New Runtime")
+V.Local.fTempColWidth.Set(1100)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(10,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,10,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,10,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,10,"fontstyle","size",7)
+Gui.F_InvRep.fgPart.BuildStyle(1,10,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,10,"type","locked",False)
+Gui.F_InvRep.fgPart.BuildStyle(2,10,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,10,"Color","Back",V.Color.LtGreen)
+Gui.F_InvRep.fgPart.BuildStyle(2,10,"Format","alignment",1)
+
+Gui.F_InvRep.fgPart.TextMatrix(11,0,"Start Date")
+V.Local.fTempColWidth.Set(950)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(11,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,11,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,11,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,11,"fontstyle","size",7)
+Gui.F_InvRep.fgPart.BuildStyle(1,11,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,11,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,11,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,11,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,11,"Format","Mask","YYYY-MM-DD")
+
+
+Gui.F_InvRep.fgPart.TextMatrix(12,0,"Due Date")
+V.Local.fTempColWidth.Set(950)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(12,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,12,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,12,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,12,"fontstyle","size",7)
+Gui.F_InvRep.fgPart.BuildStyle(1,12,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,12,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,12,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,12,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,12,"Format","Mask","YYYY-MM-DD")
+
+Gui.F_InvRep.fgPart.TextMatrix(13,0,"WO Qty")
+V.Local.fTempColWidth.Set(700)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(13,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,13,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,13,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,13,"fontstyle","size",7)
+Gui.F_InvRep.fgPart.BuildStyle(1,13,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,13,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,13,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,13,"Format","alignment",3)
+
+Gui.F_InvRep.fgPart.TextMatrix(14,0,"Qty Required")
+V.Local.fTempColWidth.Set(1100)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.ColWidth(14,V.Local.fTempColWidth)
+Gui.F_InvRep.fgPart.BuildStyle(1,14,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,14,"fontstyle","bold",True)
+Gui.F_InvRep.fgPart.BuildStyle(1,14,"fontstyle","size",7)
+Gui.F_InvRep.fgPart.BuildStyle(1,14,"Format","alignment",1)
+Gui.F_InvRep.fgPart.BuildStyle(2,14,"type","locked",True)
+Gui.F_InvRep.fgPart.BuildStyle(2,14,"fontstyle","size",V.Local.iFontSize)
+Gui.F_InvRep.fgPart.BuildStyle(2,14,"Format","alignment",3)
+
+'Cell selection moves Down after hitting enter...
+Gui.F_InvRep.fgPart.SetProperty("Enter",0)
+
+Gui.F_InvRep.fgPart.ApplyStyle(0,1)
+Gui.F_InvRep.fgPart.ApplyStyle(1,2)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subBuildStyles_fgPart_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subBuildStyles_fgPart.End
+
+Program.Sub.subLoad_fgPart.Start
+F.Intrinsic.Control.SetErrorHandler("subLoad_fgPart_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSql.Declare(String)
+V.Local.iRowCount.Declare(Long)
+Gui.F_InvRep.fgPart.Visible(False)
+F.Intrinsic.Control.CallSub(Subbuildstyles_fgpart)
+Gui.F_InvRep.fgPart.Rows(1)
+V.Local.sSql.Set("Select '0' AS SEL, VJO.JOB, VJO.SUFFIX, VJO.SEQ, VJO.PART, VJH.LOCATION, VJO.DESCRIPTION,")
+F.Intrinsic.String.Concat(V.Local.sSql," VJH.DATE_DUE, VJH.DATE_OPENED,VJO.HOURS_ESTIMATED,VJH.QTY_ORDER, VJO.SETUP, VJO.UNITS AS RUNTIME ",V.Local.sSql)
+F.Intrinsic.String.Concat(V.Local.sSql," FROM V_JOB_OPERATIONS VJO LEFT JOIN V_JOB_HEADER VJH ON VJO.JOB=VJH.JOB AND VJO.SUFFIX=VJH.SUFFIX",V.Local.sSql)
+F.Intrinsic.String.Concat(V.Local.sSql," WHERE LMO='M' AND VJO.PART='",V.Screen.F_InvRep!txtPartO.Text,"' AND VJH.LOCATION='",V.Screen.F_InvRep!txtPartOLoc.Text,"' AND VJO.FLAG_CLOSED<>'Y' AND DATE_CLOSED='1900-01-01'",V.Local.sSql)
+F.Intrinsic.String.Concat(V.Local.sSql," ORDER BY VJH.DATE_OPENED DESC ",V.Local.sSql)
+
+F.ODBC.Connection!Conx.OpenRecordsetRO("rstLoadParts",V.Local.sSql)
+F.Intrinsic.Variable.LoadUDTFromRecordset("Conx","rstLoadParts","V.uGlobal.uINV",False)
+Gui.F_InvRep.fgPart.Rows(2)
+Gui.F_InvRep.fgPart.FixedRows(1)
+Gui.F_InvRep.fgPart.LoadFromUDT("uGlobal.uINV","SEL::0*!*JOB::1*!*SUFFIX::2*!*SEQ::3*!*PART::4*!*LOC::5*!*DESCRIPTION::6*!*SETUP::7*!*RUNTIME::8*!*DATE_START::11*!*DATE_DUE::12*!*WO_QTY::13*!*QTY_RFQ::14",2)
+Gui.F_InvRep.fgPart.Visible(True)
+F.ODBC.conx!rstLoadParts.Close
+'Sort by Start Date
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subLoad_fgPart_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subLoad_fgPart.End
+
+Program.Sub.subUpdateWO.Start
+F.Intrinsic.Control.SetErrorHandler("subUpdateWO_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iRows.Declare(Long)
+V.Local.iRow.Declare(Long)
+V.Local.sSql.Declare(String)
+V.Local.iSel.Declare(Long)
+V.Local.sJob.Declare(String)
+V.Local.sSuffix.Declare(String)
+V.Local.sSeq.Declare(String)
+V.Local.dStartDate.Declare(Date)
+V.Local.dDueDate.Declare(Date)
+V.Local.sStartDate.Declare(String)
+V.Local.sDueDate.Declare(String)
+V.Local.fSetup.Declare(Float)
+V.Local.fRuntime.Declare(Float)
+V.Local.fQty.Declare(Float)
+V.Local.sParam.Declare(String)
+V.Local.sHoursEst.Declare(String)
+
+F.Intrinsic.Math.Sub(V.Screen.F_InvRep!fgPart.Rows,1,V.Local.iRows)
+
+F.Intrinsic.Control.For(V.Local.iRow,1,V.Local.iRows,1)
+	V.Local.iSel.Set(0)
+	Gui.F_InvRep.fgPart.GetTextMatrix(0,V.Local.iRow,V.Local.iSel)
+	F.Intrinsic.Control.If(V.Local.iSel,=,1)
+		Gui.F_InvRep.fgPart.GetTextMatrix(1,V.Local.iRow,V.Local.sJob)
+		Gui.F_InvRep.fgPart.GetTextMatrix(2,V.Local.iRow,V.Local.sSuffix)
+		Gui.F_InvRep.fgPart.GetTextMatrix(3,V.Local.iRow,V.Local.sSeq)
+		Gui.F_InvRep.fgPart.GetTextMatrix(9,V.Local.iRow,V.Local.fSetup)
+		Gui.F_InvRep.fgPart.GetTextMatrix(10,V.Local.iRow,V.Local.fRuntime)
+		Gui.F_InvRep.fgPart.GetTextMatrix(11,V.Local.iRow,V.Local.dStartDate)
+		Gui.F_InvRep.fgPart.GetTextMatrix(12,V.Local.iRow,V.Local.dDueDate)
+		Gui.F_InvRep.fgPart.GetTextMatrix(14,V.Local.iRow,V.Local.fQty)
+		V.Local.sParam.Set("")
+
+		'Update Part in Job_operations table
+		F.Intrinsic.String.Concat("SELECT PART, DESCRIPTION, SETUP,UNITS,UNIT_D6 FROM JOB_OPERATIONS WHERE JOB='",V.Local.sJob,"' AND SUFFIX='",V.Local.sSuffix,"' AND SEQ='",V.Local.sSeq,"'",V.Local.sSql)
+		F.ODBC.Connection!conx.OpenRecordsetRW("rstUpdJob",V.Local.sSql)
+		F.ODBC.conx!rstUpdJob.Set!UNITS(V.Local.fRuntime)
+		F.ODBC.conx!rstUpdJob.Set!UNIT_D6(V.Local.fRuntime)
+		F.ODBC.conx!rstUpdJob.Set!PART(V.Screen.F_InvRep!txtPartT.Text)
+		F.ODBC.conx!rstUpdJob.Set!DESCRIPTION(V.Screen.F_InvRep!txtPartTDes.Text)
+		F.ODBC.conx!rstUpdJob.Set!SETUP(V.Local.fSetup)
+		F.ODBC.conx!rstUpdJob.Update
+		F.ODBC.conx!rstUpdJob.Close
+
+		'Schedule WO
+		F.Intrinsic.String.Format(V.Local.dDueDate,"mmddyy",V.Local.sDueDate)
+		F.Intrinsic.String.Format(V.Local.dStartDate,"mmddyy",V.Local.sStartDate)
+
+		F.Intrinsic.String.Concat(V.Local.sStartDate,"!*!",V.Local.sDueDate,"!*!",V.Local.sJob,"!*!",V.Local.sSuffix,"!*!","!*!",V.Global.sOpt,V.Local.sParam)
+		F.Global.General.CallWrapperSync(500030,V.Local.sParam)
+
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iRow)
+Gui.F_InvRep.txtPartT.Text("")
+Gui.F_InvRep.txtPartTDes.Text("")
+Gui.F_InvRep.txtPartTLoc.Text("")
+
+F.Intrinsic.Control.CallSub(Subload_fgpart)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subUpdateWO_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subUpdateWO.End
+
+program.sub.fgpart_mouseup.start
+F.Intrinsic.Control.SetErrorHandler("fgpart_mouseup_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'COLUMN SORTING
+'
+'Columns: 0, 8, 9, 10, 11, 12, 13, 14
+F.Intrinsic.Control.If(V.Args.mouserow,=,0)
+	F.Intrinsic.Control.If(V.Args.mousecol,>=,11)
+	F.Intrinsic.Control.AndIf(V.Args.mousecol,<=,12)
+		'Sort the Column with Date format
+		Gui.F_InvRep.fgPart.sortcolumn(V.Args.mousecol,2)
+	F.Intrinsic.Control.ElseIf(V.Args.mousecol,>,0)
+		' Sort the Column
+		Gui.F_InvRep.fgPart.sortcolumn(V.Args.mousecol,0)
+	F.Intrinsic.Control.EndIF
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("fgpart_mouseup_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_3856_INV_ReplWO.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.fgpart_mouseup.end
+
+Program.Sub.Comments.Start
+${$0$}$GAB_INV_ReplWO$}$RRC$}$5/27/2013
+${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$Replace Parts in WO with a replacement part and schedule those WO.
+${$4$}$0$}$$}$0$}$-1$}$RRODRIGUEZ$}$6/20/2013 9:47:50 AM$}$Added Description to the update process
+Program.Sub.Comments.End
+
